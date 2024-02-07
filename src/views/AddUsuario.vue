@@ -86,7 +86,7 @@ import Navbar from '../components/Navbar.vue';
 
         methods: {
             addUsuario(){
-                fetch('http://localhost:8092/add', {
+                fetch('http://localhost:8083/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

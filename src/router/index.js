@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ViewUsuario from '../views/ViewUsuario.vue'
+import ViewLivros from '../views/ViewLivros.vue'
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://127.0.0.1:5173/';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8083';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +11,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ViewUsuario
+      component: ViewLivros
     },
     {
       path: '/add',

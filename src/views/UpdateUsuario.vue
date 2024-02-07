@@ -76,7 +76,7 @@ export default {
 
     methods: {
         getUsuarios(){
-            fetch(`http://localhost:8092/usuario/${this.$route.params.id}`)
+            fetch(`http://localhost:8083/usuario/${this.$route.params.id}`)
             .then(res => res.json())
             .then(data => {
                 this.usuario = data;
@@ -85,7 +85,7 @@ export default {
 
         },
         updateUsuario(){
-            fetch(`http://localhost:8092/usuario/${this.$route.params.id}`, {
+            fetch(`http://localhost:8083/usuario/${this.$route.params.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
