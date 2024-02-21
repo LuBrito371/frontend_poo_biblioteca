@@ -20,7 +20,7 @@
             <tbody>
               <tr v-for="livro in livros" :key="livro.id">
                 <th scope="row">{{ livro.id }}</th>
-                <td>{{ livro.name }}</td>
+                <td>{{ livro.nomeLivro }}</td>
                 <td>{{ livro.isbn }}</td>
                 <td>
                   <a class="btn btn-primary" :href="`/edit/${livro.id}`"
@@ -43,8 +43,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import Navbar from "../components/Navbar.vue";
+
+axios.defaults.baseURL = "http://127.0.0.1:5173/";
+axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+  "http://localhost:8083";
 
 export default {
   name: "ViewLivros",
@@ -63,15 +67,14 @@ export default {
 
   methods: {
     getLivros() {
-     
-      axios
-        .get("http://localhost:8083/livro/livrosPaginados")
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error("Erro ao fazer a solicitação:", error);
-        });
+      fetch(`http://localhost:8083/livro/livrosPaginados`, {
+        method: "GET",
+      }, ).then(response =>{
+        return response.json();
+      })
+      .then((data) => {
+        this.livros = data.content;
+      });
     },
     deleteLivro(id) {
       fetch(`http://localhost:8083/livro/${id}`, {
