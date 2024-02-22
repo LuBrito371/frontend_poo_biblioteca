@@ -12,14 +12,24 @@ const router = createRouter({
       component: ViewLivros
     },
     {
-      path: '/add',
-      name: 'add',
+      path: '/addUsuario',
+      name: 'addUsuario',
       component: () => import('../views/AddUsuario.vue')
     },
     {
-      path: '/edit/:id',
-      name: 'edit',
+      path: '/addLivro',
+      name: 'addLivro',
+      component: () => import('../views/AddLivro.vue')
+    },
+    {
+      path: '/editUsuario/:id',
+      name: 'editUsuario',
       component: () => import('../views/UpdateUsuario.vue')
+    },
+    {
+      path: '/editLivro/:id',
+      name: 'editLivro',
+      component: () => import('../views/UpdateLivro.vue')
     }
   ]
 })

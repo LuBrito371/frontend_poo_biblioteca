@@ -13,7 +13,10 @@
                     <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/add">Add</a>
+                    <a class="nav-link" href="/addLivro">Add Livro</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/addUsuario">Add Usuario</a>
                     </li>
                        
                 </ul>
