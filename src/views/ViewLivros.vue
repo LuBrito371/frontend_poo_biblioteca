@@ -8,7 +8,10 @@
         <div class="col-md-12">
           <h1 class="text-center">Acervo</h1>
           <!--Add button -->
-          <a href="/add" class="btn btn-primary">Add Livro</a>
+          <div class="buttons">
+            <a href="/addUsuario" class="btn btn-primary">Add Usuario</a>
+            <a href="/addLivro" class="btn btn-primary">Add Livro</a>
+          </div>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -23,12 +26,12 @@
                 <td>{{ livro.nomeLivro }}</td>
                 <td>{{ livro.isbn }}</td>
                 <td>
-                  <a class="btn btn-primary" :href="`/edit/${livro.id}`"
+                  <a class="btn btn-primary" :href="`/editLivro/${livro.id}`"
                     >Edit</a
                   >
                   <button
                     class="btn btn-danger mx-2"
-                    @click="deletelivro(livro.id)"
+                    @click="deleteLivro(livro.id)"
                   >
                     Delete
                   </button>
@@ -69,19 +72,20 @@ export default {
     getLivros() {
       fetch(`http://localhost:8083/livro/livrosPaginados`, {
         method: "GET",
-      }, ).then(response =>{
-        return response.json();
       })
-      .then((data) => {
-        this.livros = data.content;
-      });
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          this.livros = data.content;
+        });
     },
     deleteLivro(id) {
+     
       fetch(`http://localhost:8083/livro/${id}`, {
         method: "DELETE",
       }).then((data) => {
-        console.log(data);
-        this.getlivros();
+        this.getLivros();
       });
     },
   },
