@@ -18,6 +18,10 @@
                     <li class="nav-item">
                     <a class="nav-link" href="/addUsuario">Add Usuario</a>
                     </li>
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="">Lista de Usuarios</a>
+                    </li>
                        
                 </ul>
                
