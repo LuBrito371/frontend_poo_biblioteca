@@ -30,6 +30,16 @@ const router = createRouter({
       path: '/editLivro/:id',
       name: 'editLivro',
       component: () => import('../views/UpdateLivro.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: () => import('../views/Perfil.vue')
     }
   ]
 })
