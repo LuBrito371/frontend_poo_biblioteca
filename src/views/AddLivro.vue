@@ -192,7 +192,7 @@ export default {
 
   methods: {
     addLivro() {
-      fetch("http://localhost:8083/livro/salvarLivro", {
+      fetch("http://localhost:8080/livro/salvarLivro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
