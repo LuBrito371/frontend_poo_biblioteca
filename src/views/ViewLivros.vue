@@ -7,6 +7,24 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="text-center">Acervo</h1>
+          <form @submit.prevent="buscaPor">
+            <div class="searchBar row">
+              <input
+                type="text"
+                class="col"
+                placeholder="Digite..."
+                v-model="busca.info"
+              />
+              <select name="" id="" class="col" v-model="busca.parametro">
+                <option value="nome">Nome</option>
+                <option value="isbn">ISBN</option>
+                <option value="id">ID</option>
+              </select>
+              <button class="col btn btn-success" type="submit" value="Submit">
+                Pesquisar
+              </button>
+            </div>
+          </form>
           <!--Add button -->
           <div class="buttons">
             <a href="/addUsuario" class="btn btn-primary">Add Usuario</a>
@@ -61,6 +79,10 @@ export default {
   data() {
     return {
       livros: [],
+      busca: {
+        parametro: "",
+        info: "",
+      },
     };
   },
 
@@ -81,12 +103,55 @@ export default {
         });
     },
     deleteLivro(id) {
-     
       fetch(`http://localhost:8083/livro/${id}`, {
         method: "DELETE",
       }).then((data) => {
         this.getLivros();
       });
+    },
+    buscaPor() {
+      if (this.busca.parametro == "id") {
+        fetch(`http://localhost:8083/livro/id/${this.busca.info}`, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            var livro = data;
+            this.livros = [];
+            this.livros[0] = livro;
+            
+          });
+      }
+      if (this.busca.parametro == "isbn") {
+        fetch(`http://localhost:8083/livro/isbn/${this.busca.info}`, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            var livro = data;
+            this.livros = [];
+            this.livros[0] = livro;
+            
+          });
+      }
+      if (this.busca.parametro == "nome") {
+        fetch(`http://localhost:8083/livro/nomeLivro/${this.busca.info}`, {
+          method: "GET",
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            var livro = data;
+            this.livros = [];
+            this.livros[0] = livro;
+            
+          });
+      }
     },
   },
 };
