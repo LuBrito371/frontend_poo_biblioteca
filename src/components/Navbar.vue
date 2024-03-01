@@ -18,12 +18,20 @@
                     <li class="nav-item">
                     <a class="nav-link" href="/addUsuario">Add Usuario</a>
                     </li>
+
                     <li class="nav-item">
                     <a class="nav-link" href="/Login">Login</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="/Perfil">Perfil</a>
                     </li>
+
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="">Lista de Usuarios</a>
+                    </li>
+                       
+
                 </ul>
                
                 </div>
