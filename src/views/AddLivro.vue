@@ -185,13 +185,15 @@ export default {
         genero: "",
         isbn: "",
         anoLancamento: "",
-        quantidade: ""
+        quantidade: "",
+        autores: []
       },
     };
   },
 
   methods: {
     addLivro() {
+      console.log(JSON.stringify(this.livro.autores));
       fetch("http://localhost:8083/livro/salvarLivro", {
         method: "POST",
         headers: {
@@ -199,6 +201,7 @@ export default {
         },
         body: JSON.stringify(this.livro),
       }).then((data) => {
+       console.log(data);
         this.$router.push("/");
       });
     },
