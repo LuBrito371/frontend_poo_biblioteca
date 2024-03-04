@@ -20,14 +20,73 @@
                     </li>
 
                     <li class="nav-item">
+                    <a class="nav-link" href="/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/Perfil">Perfil</a>
+                    </li>
+
+
+                    <li class="nav-item">
                     <a class="nav-link" href="">Lista de Usuarios</a>
                     </li>
                        
+
                 </ul>
                
                 </div>
             </div>
-        </nav>
+        </nav> 
     </main>
 </template>
 
+
+<script>
+
+export default {
+  name: 'navbar',
+  props: {
+    userId: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
+    return {
+      usuario: {
+        id: "",
+        nome: "",
+        endereco: "",
+        numeroContato: "",
+        email: "",
+        login: "",
+        senha: ""
+      }
+    }
+  },
+  methods: {
+    async dadosDoUsuario(userId) {
+      try {
+        const response = await fetch(`http://localhost:8080/usuario/${userId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          const data = await response.json(); // Converte a resposta para JSON
+          this.usuario = data; // Atualiza this.usuario com os dados recebidos do backend
+        } else {
+          console.error('Erro ao obter os dados do usuário:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    }
+  },
+  mounted() {
+    this.dadosDoUsuario(this.userId); // Chama a função dadosDoUsuario() ao carregar o componente com o ID do usuário dinâmico
+  }
+}
+</script>

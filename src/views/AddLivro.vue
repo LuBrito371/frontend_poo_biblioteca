@@ -193,8 +193,9 @@ export default {
 
   methods: {
     addLivro() {
-      console.log(JSON.stringify(this.livro.autores));
-      fetch("http://localhost:8083/livro/salvarLivro", {
+
+      fetch("http://localhost:8080/livro/salvarLivro", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
